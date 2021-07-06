@@ -16,3 +16,22 @@
       get_url:
         url: https://referenceapplicationskhaja.s3-us-west-2.amazonaws.com/spring-petclinic-2.4.2.jar
         dest: /usr/share/springpetclinic/spring-petclinic-2.4.2.jar
+    - name: Create user springbootuser
+      ansible.builtin.user:
+        name:  springbootuser
+        password: springbootuser
+    - name: Change ownership of file to springbootuser
+      file:
+        path: /usr/share/springpetclinic/spring-petclinic-2.4.2.jar
+        owner: springbootuser
+        mode : '500'
+        state: file
+    - name: Copy springpetclinic.service to /etc/systemd/system
+      copy:
+        src: springpetclinic.service
+        dest: /etc/systemd/system/springpetclinic.service
+    - name: Enable and start springpetclinic.service
+      systemd:
+        name: springpetclinic.service
+        enabled: yes 
+        state: started
