@@ -1,0 +1,10 @@
+[ubuntu]
+10.128.0.8
+localhost
+
+[centos]
+10.128.0.6
+
+
+[appserver]
+10.128.0.8
