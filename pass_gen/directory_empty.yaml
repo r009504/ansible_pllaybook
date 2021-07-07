@@ -1,0 +1,15 @@
+---
+  - name: Validate which directory are empty
+    hosts: appserver
+    become: yes
+    tasks:
+      - name: List the directory under /home/devops
+        shell: ls /home/devops
+        register: dir_data
+      - name: print the directory which are empty
+        debug:
+          msg: "{{ item }}"
+        loop: "{{ dir_data.stdout_lines }}"
+          msg: " The directory is empty"
+        when: dir_data.stdout_lines == ""
+      
