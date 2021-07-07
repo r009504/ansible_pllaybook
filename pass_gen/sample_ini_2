@@ -1,0 +1,5 @@
+[ appsever ]
+sales[1:10].example.com
+
+[ dbserver ]
+db[a:d].example.com
