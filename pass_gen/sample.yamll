@@ -4,8 +4,8 @@ all:
   children:
     appserver:
       hosts:
-        10.128.0.8:
-        app.example.com
+        app1.example.com:
+        app2.example.com:
     webserver:
       hosts:
         db1.example.com:
