@@ -4,7 +4,7 @@
     become: yes
     tasks:
       - name: List content of the home directory
-        shell: ls /home/devops/ansible_pllaybook
+        shell: ls /home/devops
         register: dir_data
       - name: Print the directory contents 
         debug:
