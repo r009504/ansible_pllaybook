@@ -1,6 +1,6 @@
 ---
   - name: Playbook to demonstrate register module using passgen command to read output from register 
-    host: appserver
+    hosts: appserver
     become: yes
     tasks: 
       - name: Update and install pwgen package
