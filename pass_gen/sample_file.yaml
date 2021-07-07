@@ -1,0 +1,12 @@
+all:
+  hosts:
+    10.192.7.18
+  children:
+    appserver:
+      hosts:
+        10.128.0.8:
+        app.example.com
+    webserver:
+      hosts:
+        db1.example.com:
+        db2.example.com:
