@@ -1,0 +1,17 @@
+---
+  - name: Backup direcotry 
+    hosts: appserver
+    become: yes
+    tasks:
+      - name: List the contenet of /home/devops directory
+        shell: ls /home/devops
+        register: backup_data
+      - name: Create backup directory
+        file:
+          path: /tmp/backup_devops
+          state: directroy
+      - name: copy contents from /home/devops to /tmp/backup_devops
+        copy:
+          src: /home/devops
+          dest: /tmp/backup_devops
+         
