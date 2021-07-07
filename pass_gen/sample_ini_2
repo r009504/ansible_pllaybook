@@ -1,4 +1,4 @@
-[appsever]
+[appserver]
 sales[1:10].example.com
 
 [dbserver]
