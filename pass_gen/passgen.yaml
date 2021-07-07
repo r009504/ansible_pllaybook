@@ -13,4 +13,4 @@
         register: mypass
       - name: Print the password 
         debug:
-          msg: "The password is {{ mypass }}"
+          msg: "The password is {{ mypass.stdout_lines }}"
