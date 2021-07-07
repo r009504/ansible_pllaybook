@@ -15,5 +15,5 @@
           src: /home/devops/{{ item }}
           dest: /tmp/backup_devops
           remote_src: yes 
-          loop: "{{ backup_data.stdout_lines }}"
+        loop: "{{ backup_data.stdout_lines }}"
          
