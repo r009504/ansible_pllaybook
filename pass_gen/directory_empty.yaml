@@ -9,7 +9,9 @@
       - name: print the directory which are empty
         debug:
           msg: "{{ item }}"
-        loop: "{{ dir_data.stdout_lines }}"
           msg: " The directory is empty"
+        loop: "{{ dir_data.stdout_lines }}"
         when: dir_data.stdout_lines == ""
+          
+        
       
