@@ -6,6 +6,7 @@ all:
       hosts:
         app1.example.com:
         app2.example.com:
+        10.127.19.30:
     webserver:
       hosts:
         db1.example.com:
