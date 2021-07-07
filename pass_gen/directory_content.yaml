@@ -1,0 +1,12 @@
+---
+  - name: Store Directory Contents
+    hosts: appserver
+    become: yes
+    tasks:
+      - name: List content of the home directory
+        shell: ls -ltr /home/devops/ansible_playbook
+        register: dir_data
+      - name: Print the directory contents 
+        debug:
+          msg: "{{ item }}"
+        loop: "{{ dir_data.stdout_lines }}"
