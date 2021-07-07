@@ -4,7 +4,7 @@
     become: yes
     tasks:
       - name: List content of the home directory
-        shell: ls /home/devops
+        shell: ls -l /home/devops | wc -l
         register: dir_data
       - name: Print the directory contents 
         debug:
