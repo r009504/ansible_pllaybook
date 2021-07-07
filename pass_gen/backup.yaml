@@ -9,10 +9,11 @@
       - name: Create backup directory
         file:
           path: /tmp/backup_devops
-          state: directroy
+          state: directory
       - name: copy contents from /home/devops to /tmp/backup_devops
         copy:
-          src: /home/devops
+          src: /home/devops/{{ item }}
           dest: /tmp/backup_devops
           remote_src: yes 
+          loop: "{{ backup_data.stdout_lines }}""
          
