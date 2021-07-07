@@ -14,5 +14,5 @@
         copy:
           src: /home/devops
           dest: /tmp/backup_devops
-          backup: yes 
+          remote_src: yes 
          
