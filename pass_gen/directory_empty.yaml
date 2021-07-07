@@ -9,4 +9,4 @@
       - name: print the directory which are empty
         debug:
           msg: "Directoy is empty"
-        when: dir_data.stdout_lines == "
+        when: dir_data.stdout == ""
