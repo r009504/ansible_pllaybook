@@ -4,14 +4,9 @@
     become: yes
     tasks:
       - name: List the directory under /home/devops
-        shell: ls /home/devops
+        shell: ls /home/devops/test10
         register: dir_data
       - name: print the directory which are empty
         debug:
-          msg: "{{ item }}"
-          msg: " The directory is empty"
-        loop: "{{ dir_data.stdout_lines }}"
-        when: dir_data.stdout_lines == ""
-          
-        
-      
+          msg: "Directoy is empty"
+        when: dir_data.stdout_lines == "
