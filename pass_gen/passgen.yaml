@@ -1,0 +1,16 @@
+---
+  - name: Playbook to demonstrate register module using passgen command to read output from register 
+    host: appserver
+    become: yes
+    tasks: 
+      - name: Update and install pwgen package
+        apt:
+          name:  pwgen
+          update_cache: yes
+          state: present
+      - name: Execute pwgen command store output to register module
+        shell: pwgen -N 1 -s 30
+        register: mypass
+      - name: Print the password 
+        debug:
+          msg: "The password is {{ mypass }}"
