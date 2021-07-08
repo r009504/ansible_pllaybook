@@ -1,0 +1,8 @@
+---
+apache_package: apache2
+php_package: php
+lib_package: libapache2-mod-php
+sql_package: php-mysql
+cmd_package: php-cli
+app_file: info.php
+file_location: /var/www/html
