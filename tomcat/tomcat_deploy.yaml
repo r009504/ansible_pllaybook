@@ -29,9 +29,9 @@
           url: "{{ download_url }}"
           dest: "{{ download_location }}"
       - name: Extract the tar file and copy to /opt/tomcat
-        unarchive:
-          src: "{{ untar_location }}"
-          dest: "{{ tomcat_dir }}"
+        shell:
+          chdir: /tmp
+          cmd: tar xzvf apache-tomcat-*tar.gz -C /opt/tomcat --strip-components=1
 
     handlers:
       - name: group created
