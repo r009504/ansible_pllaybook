@@ -41,7 +41,7 @@
         systemd:
           name: "{{ apache_package }}"
           enabled: yes
-          state: started
+          state: restarted
 
     handlers:
       - name: apache package installation
