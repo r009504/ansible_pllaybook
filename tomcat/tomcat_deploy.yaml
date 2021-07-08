@@ -5,7 +5,7 @@
     tasks:
       - name: Install default java package
         package:
-          name" "{{ java_package }}"
+          name: "{{ java_package }}"
           state: present
       - name: Create tomcat group
         group:
