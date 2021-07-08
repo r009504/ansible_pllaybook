@@ -36,6 +36,7 @@
         file:
           path: "{{ tomcat_dir }}"
           onwer: "{{ group_name }}"
+          recurse: yes
       - name: tomcat group read access to the conf directory /opt/tomcat
         file:
           path: "{{ conf_dir }}"
