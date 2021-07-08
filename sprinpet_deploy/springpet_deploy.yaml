@@ -1,0 +1,41 @@
+---
+  - name: Springpetclinic deployment
+    hosts: appserver
+    become: yes
+    tasks:
+      - name: Chekcing the O.S distrubution is ubuntu
+        fail:
+          msg: "Deployment will be skipped as O.S is not ubuntu "
+        when: ansible_facts["distribution"] != 'ubuntu'
+      - name: instaling  java package
+        apt:
+          name: "{{ java_package }}"
+          update_cache: yes
+      - name: debug message for java
+        debug:
+          msg: "Java package {{ java_package }} is installed "
+        notify:
+          - debug message for java
+      - name: Creating applicaiton directory
+        file:
+          path: "{{ apps_directory }}"
+          state: directory
+      - name: debug message for app directory
+        debug:
+          msg: "Directory is created at location at {{ apps_directory }}"
+        notify:
+          - debug message for app directory
+      - name: Download Springpetclinic.jar file
+        get_url:
+          url: "{{ download_url }}"
+          dest: "{{ dest_apps_locaiton }}"
+
+    handlers:
+      - name: debug message for java
+        debug:
+          msg: " Java package {{ java_package }} installed"
+
+      - name: debug message for app directory
+        debug:
+          msg: "Direcotry is created at {{ "apps_directory" }}
+      
