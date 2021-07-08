@@ -1,5 +1,5 @@
 ---
-java_package: default-jdk
+java_package: penjdk-11-jdk
 group_name: tomcat
 user_name: tomcat
 download_url: https://mirrors.estointernet.in/apache/tomcat/tomcat-9/v9.0.50/bin/apache-tomcat-9.0.50.tar.gz
