@@ -15,3 +15,4 @@ file_path:
   - /opt/tomcat/logs
 tomcat_service_file: tomcat.service
 tomcat_service_dir: /etc/systemd/system/tomcat.service
+app_name: tomcat

@@ -53,7 +53,7 @@
           dest: "{{ tomcat_service_dir }}"
       - name: Start tomcat service  
         systemd:
-          name: "{{ user_name }}"
+          name: "{{ app_name }}"
           daemon_reload: yes
           state: started
 
