@@ -6,7 +6,7 @@
       - name: Chekcing the O.S distrubution is ubuntu
         fail:
           msg: "Deployment will be skipped as O.S is not ubuntu "
-        when: ansible_facts['distribution'] != "ubuntu"
+        when:  ansible_facts['distribution'] != "Ubuntu"
       - name: instaling  java package
         apt:
           name: "{{ java_package }}"
