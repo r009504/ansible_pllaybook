@@ -7,65 +7,39 @@
         package:
           name: "{{ apache_package }}"
           state: present
-        notify:
+        notify: 
           - apache package installation
-      - name: Install pakage for php
+      - name: Installing PHP package moudule
         package:
-          name: "{{ php_package }}"
+          name: "{{ item }}"
           state: present
-        notify:
-          - php package installation
-      - name: Install pakage for libapache2-mod-php 
-        package:
-          name: "{{ lib_package }}"
-          state: present
-        notify:
-          - libapache2-mod-php package installation
-      - name: Install pakage for php-mysql
-        package:
-          name: "{{ sql_package }}"
-          state: present
-        notify:
-          - php-mysql package installation
-      - name: Install pakage for php-cli
-        package:
-          name: "{{ cmd_package }}"
-          state: present
-        notify:
-          - php-cli package installation
-      - name: Copying info.php to /var/www/html/
+        loop: "{{ php_package_module }}"
+      - name: Copying php.info file to appliction directory
         copy:
           src: "{{ app_file }}"
           dest: "{{ file_location }}"
-      - name: STarting apache service
-        systemd:
+        notify:
+          - file copied to appliciaton directory
+          - restart appache server 
+      - name: Start Apache service
+        service:
           name: "{{ apache_package }}"
-          enabled: yes
-          state: restarted
-      - name: STarting apache service
-        systemd:
-          name: "{{ apache_package }}"
-          enabled: yes
-          state: restarted
+          state: started
 
+     
     handlers:
       - name: apache package installation
         debug:
           msg: " Installing {{ apache_package }} "
 
-      - name: php package installation
+      - name: file copied to appliciaton directory
         debug:
-          msg: " Installing {{ php_package }} "
+          msg: " File copied to {{ file_location }} "
 
-      - name: libapache2-mod-php package installation
-        debug:
-          msg: " Installing {{ lib_package }} "
+      - name: restart appache server 
+        service:
+          name: "{{ apache_package }}"
+          state: restarted
+    
 
-      - name: php-mysql package installation
-        debug:
-          msg: " Installing {{ sql_package }} "
-
-      - name: php-cli package installation
-        debug:
-          msg: " Installing {{ cmd_package }} "
-          
+      
