@@ -47,6 +47,16 @@
           path: "{{ item }}"
           owner: "{{ user_name }}"
         loop: "{{ file_path }}"
+      - name: Copying tomcat.service file to /etc/systemd/system
+        copy:
+          src: "{{ tomcat_service_file }}"
+          dest: "{{ tomcat_service_dir }}"
+      - name: Start tomcat service  
+        systemd:
+          name: "{{ user_name }}"
+          daemon_reload: yes
+          state: started
+
 
 
     handlers:
