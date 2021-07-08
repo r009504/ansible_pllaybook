@@ -30,7 +30,7 @@
           dest: "{{ download_location }}"
       - name: Extract the tar file and copy to /opt/tomcat
         unarchive:
-          src: "{{ download_location }}"
+          src: "{{ untar_location }}"
           dest: "{{ tomcat_dir }}"
 
     handlers:
