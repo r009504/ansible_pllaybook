@@ -31,7 +31,7 @@
       - name: Extract the tar file and copy to /opt/tomcat
         shell:
           chdir: /tmp
-          cmd: tar xzvf apache-tomcat-*tar.gz -C /opt/tomcat --strip-components=1
+          cmd: tar xzvf "{{ tar_file }}" -C /opt/tomcat --strip-components=1
 
     handlers:
       - name: group created
