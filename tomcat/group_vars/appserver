@@ -7,3 +7,9 @@ download_location: /tmp
 extra_command: tar xzvf apache-tomcat-*tar
 tomcat_dir: /opt/tomcat
 tar_file: apache-tomcat-9.0.50.tar.gz
+conf_dir: /opt/tomcat/conf
+file_path:
+  - /opt/tomcat/webapps
+  - /opt/tomcat/work
+  - /opt/tomcat/temp
+  - /opt/tomcat/logs

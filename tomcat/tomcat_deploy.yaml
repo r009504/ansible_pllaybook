@@ -32,6 +32,20 @@
         shell:
           chdir: /tmp
           cmd: tar xzvf "{{ tar_file }}" -C /opt/tomcat --strip-components=1
+      - name: Creating tomcat group ownership to entire directory
+        file:
+          path: "{{ tomcat_dir }}"
+          onwer: "{{ group_name }}"
+      - name: tomcat group read access to the conf directory /opt/tomcat
+        file:
+          path: "{{ conf_dir }}"
+          mode: g=r,g=x
+      - name: tomcat user the owner of the webapps, work, temp, and logs directories
+        file:
+          path: "{{ item }}"
+          owner: "{{ user_name }}"
+        loop: "{{ file_path }}"
+
 
     handlers:
       - name: group created
