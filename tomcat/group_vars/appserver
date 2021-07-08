@@ -6,4 +6,4 @@ download_url: https://downloads.apache.org/tomcat/tomcat-9/v9.0.50/bin/apache-to
 download_location: /tmp
 extra_command: tar xzvf apache-tomcat-*tar
 tomcat_dir: /opt/tomcat
-untar_location: /tmp/apache-tomcat-9.0.50.tar.gz
+untar_location: /tmp/apache-tomcat-9.0.50.tar.gz.sha512
