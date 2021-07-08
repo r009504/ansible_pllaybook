@@ -38,7 +38,7 @@
           src: "{{ app_file }}"
           dest: "{{ file_location }}"
       - name: STarting apache service
-        systemcd: 
+        systemd:
           name: "{{ apache_package }}"
           enabled: yes
           state: started
