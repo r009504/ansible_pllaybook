@@ -35,7 +35,7 @@
       - name: Creating tomcat group ownership to entire directory
         file:
           path: "{{ tomcat_dir }}"
-          onwer: "{{ group_name }}"
+          onwer: "{{ user_name }}"
           recurse: yes
       - name: tomcat group read access to the conf directory /opt/tomcat
         file:
