@@ -5,32 +5,32 @@
     tasks:
       - name: Install pakage for Lampstack 
         package:
-          - name: "{{ apache_package }}"
-            state: present
+          name: "{{ apache_package }}"
+          state: present
         notify:
           - apache package installation
       - name: Install pakage for php
         package:
-          - name: "{{ php_package }}"
-            state: present
+          name: "{{ php_package }}"
+          state: present
         notify:
           - php package installation
       - name: Install pakage for libapache2-mod-php 
         package:
-          - name: "{{ lib_package }}"
-            state: present
+          name: "{{ lib_package }}"
+          state: present
         notify:
           - libapache2-mod-php package installation
       - name: Install pakage for php-mysql
         package:
-          - name: "{{ sql_package }}"
-            state: present
+          name: "{{ sql_package }}"
+          state: present
         notify:
           - php-mysql package installation
       - name: Install pakage for php-cli
         package:
-          - name: "{{ cmd_package }}"
-            state: present
+          name: "{{ cmd_package }}"
+          state: present
         notify:
           - php-cli package installation
       - name: Copying info.php to /var/www/html/
