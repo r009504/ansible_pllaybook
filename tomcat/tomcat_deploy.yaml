@@ -48,6 +48,8 @@
         file:
           path: "{{ item }}"
           owner: "{{ user_name }}"
+          recurse: yes
+          state: directory
         loop: "{{ file_path }}"
       - name: Copying tomcat.service file to /etc/systemd/system
         copy:
