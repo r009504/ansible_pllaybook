@@ -37,6 +37,11 @@
         copy:
           src: "{{ app_file }}"
           dest: "{{ file_location }}"
+      - name: STarting apache service
+        systemcd: 
+          - name: "{{ apache_package }}"
+            enabled: yes
+            state: started
 
     handlers:
       - name: apache package installation
