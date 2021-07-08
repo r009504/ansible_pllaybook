@@ -18,18 +18,43 @@
           path: "{{ apps_directory }}"
           state: directory
         notify:
-          - debug message fro directory creation
+          - debug message for directory creation
       - name: Download Springpetclinic.jar file
         get_url:
           url: "{{ download_url }}"
           dest: "{{ dest_apps_locaiton }}"
+      - name: Creating springbootuser
+        user:
+          name: "{{ app_user }}"
+          password: "{{ app_user }}"
+        notify:
+          - Change file permission
+      - name: Creating springpetclinic.service 
+        copy:
+          src: "{{ app_service_name }}"
+          dest: "{{ app_service_directory }}"
+      - name: Emable and start springpetclinic.service
+        systemd:
+          name: "{{ app_service_name }}"
+          enabled: yes
+          state: started
+
+      
 
     handlers:
       - name: debug message for Java
         debug:
           msg: " Java package {{ java_package }} installed"
 
-      - name: debug message fro directory creation
+      - name: debug message for directory creation
         debug:
           msg: "Direcotry is created at {{ apps_directory }} "
+      
+      - name: Change file permission
+        file:
+          path: "{{ apps_directory }}"
+          owner: "{[  app_user }}"
+          mode: '500'
+          state: file
+
       
