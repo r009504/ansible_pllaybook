@@ -1,0 +1,61 @@
+---
+  - name: Lampstack deployment
+    hosts: appserver
+    become: yes
+    tasks:
+      - name: Install pakage for Lampstack 
+        package:
+          - name: "{{ apache_package }}"
+            state: present
+        notify:
+          - apache package installation
+      - name: Install pakage for php
+        package:
+          - name: "{{ php_package }}"
+            state: present
+        notify:
+          - php package installation
+      - name: Install pakage for libapache2-mod-php 
+        package:
+          - name: "{{ lib_package }}"
+            state: present
+        notify:
+          - libapache2-mod-php package installation
+      - name: Install pakage for php-mysql
+        package:
+          - name: "{{ sql_package }}"
+            state: present
+        notify:
+          - php-mysql package installation
+      - name: Install pakage for php-cli
+        package:
+          - name: "{{ cmd_package }}"
+            state: present
+        notify:
+          - php-cli package installation
+      - name: Copying info.php to /var/www/html/
+        copy:
+          src: "{{ app_file }}"
+          dest: "{{ file_location }}"
+
+    handlers:
+      - name: apache package installation
+        debug:
+          msg: " Installing {{ apache_package }} "
+
+      - name: php package installation
+        debug:
+          msg: " Installing {{ php_package }} "
+
+      - name: libapache2-mod-php package installation
+        debug:
+          msg: " Installing {{ lib_package }} "
+
+      - name: php-mysql package installation
+        debug:
+          msg: " Installing {{ sql_package }} "
+
+      - name: php-cli package installation
+        debug:
+          msg: " Installing {{ cmd_package }} "
+          
