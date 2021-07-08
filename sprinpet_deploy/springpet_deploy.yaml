@@ -12,24 +12,24 @@
           name: "{{ java_package }}"
           update_cache: yes
         notify:
-          - debug message for java
+          - instaling  java package
       - name: Creating applicaiton directory
         file:
           path: "{{ apps_directory }}"
           state: directory
         notify:
-          - debug message for app directory
+          - Creating applicaiton directory
       - name: Download Springpetclinic.jar file
         get_url:
           url: "{{ download_url }}"
           dest: "{{ dest_apps_locaiton }}"
 
     handlers:
-      - name: debug message for java
+      - name: instaling  java package
         debug:
           msg: " Java package {{ java_package }} installed"
 
-      - name: debug message for app directory
+      - name: Creating applicaiton directory
         debug:
           msg: "Direcotry is created at {{ apps_directory }} "
       
