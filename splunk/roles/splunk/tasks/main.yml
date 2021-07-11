@@ -6,5 +6,6 @@
       dest: "{{ download_location }}"
   - name: Install splunk deb package
     apt:
+      update_cache: yes
       deb: "{{ package_location }}"
     
