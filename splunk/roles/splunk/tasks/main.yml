@@ -8,4 +8,11 @@
     apt:
       update_cache: yes
       deb: "{{ package_location }}"
+  - name: Enabled boot start
+    service:
+      name: splunk
+      pattern: /opt/splunk/bin/splunk
+      enabled: yes
+      
+
     
