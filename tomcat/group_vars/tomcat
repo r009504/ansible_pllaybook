@@ -13,6 +13,6 @@ file_path:
   - /opt/tomcat/work
   - /opt/tomcat/temp
   - /opt/tomcat/logs
-tomcat_service_file: tomcat.service
+tomcat_service: tomcat.service
 tomcat_service_dir: /etc/systemd/system/tomcat.service
 app_name: tomcat

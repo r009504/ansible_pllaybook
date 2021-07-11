@@ -1,0 +1,6 @@
+---
+  - name: Install splunk on ubuntu hosts
+    hosts: splunk_servers
+    become: yes
+    roles:
+      - splunk
