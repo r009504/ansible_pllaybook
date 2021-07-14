@@ -4,12 +4,12 @@
     become: yes
     tasks:
       - name: To check if file exists
-        file:
+        stat:
           path: "{{ file_path }}"
         register: file_info
       - name: create file if ifle do not exists
         file:
-          path: "{{ file_info }}"
+          path: "{{ file_name }}"
           state: touch
-        when: not file_info.exists
+        when: not file_info.stat.exists
     
