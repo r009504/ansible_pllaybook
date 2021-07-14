@@ -12,10 +12,5 @@
           path: "{{ file_name }}"
           state: touch
         when: not file_info.stat.exists
-        notify:
-          - file created
-    handlers:
-      - name: file created
-        debug:
-          msg: "File is already created"
+       
     
