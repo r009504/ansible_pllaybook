@@ -8,8 +8,6 @@
           path: "{{ file_path }}"
         register: file_info
       - name: create file if ifle do not exists
-        file:
-          path: "{{ file_path }}"
           debug:
             msg: "This is directory"
         when: file_info.stat.isdir
