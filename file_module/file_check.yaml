@@ -11,5 +11,5 @@
         file:
           path: "{{ file_info }}"
           state: touch
-        when: not file_info.stats.exists
+        when: not file_info.stat.exists
     
