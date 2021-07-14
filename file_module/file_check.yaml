@@ -5,7 +5,7 @@
     tasks:
       - name: To check if file exists
         stat:
-          path: "{{ file_path }]"
+          path: "{{ file_path }}"
         register: file_info
       - name: create file if ifle do not exists
         file:
