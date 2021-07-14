@@ -1,0 +1,17 @@
+---
+  - name: Play to check file path is directory
+    hosts: all
+    become: yes
+    tasks:
+      - name: To check if file exists
+        stat:
+          path: "{{ file_path }}"
+        register: file_info
+      - name: create file if ifle do not exists
+        file:
+          path: "{{ file_path }}"
+          debug:
+            msg: "This is directory"
+        when: file_info.stat.isdir
+       
+    
