@@ -1,0 +1,15 @@
+---
+  - name: Play to check if hte file exists
+    hosts: all
+    become: yes
+    tasks:
+      - name: To check if file exists
+        stat:
+          path: "{{ file_path }]"
+        register: file_info
+      - name: create file if ifle do not exists
+        file:
+          path: "{{ file_info }}"
+          state: touch
+        when: not file_info.stats.exists
+    
