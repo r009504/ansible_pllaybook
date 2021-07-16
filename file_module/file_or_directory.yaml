@@ -4,11 +4,14 @@
     become: yes
     tasks:
       - name: list the contents of the directory
-        shell: ls /home/devops
+        find:
+          path: /home/devops
+          file_type: directory
         register: data
-      - name: check if it directory
+      - name: List of directory
         debug:
-          msg: "{{ item }}"
-        loop: "{{ data.stdout_lines }}"
+          msg: "{{ data }}"
+      
+        
         
     
