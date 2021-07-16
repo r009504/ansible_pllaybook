@@ -1,0 +1,14 @@
+---
+  - name: Play book to check the contents of direcotry are files or directory
+    hosts: all
+    become: yes
+    tasks:
+      - name: list the contents of the directory
+        shell: ls /home/devops
+        register: data
+      - name: check if it directory
+        debug:
+          msg: "{{ item }}"
+        loop: "{{ data.stdout_lines }}"
+        
+    
