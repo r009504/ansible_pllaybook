@@ -8,5 +8,4 @@
         register: folder_list
       - name: Display list of directory
         debug:
-          msg: "{{ item }}"
-        loop: "{{ folder_list.stdout }}"
+          msg: "{{ folder_list.stdout }}"
