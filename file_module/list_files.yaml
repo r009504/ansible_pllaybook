@@ -11,9 +11,8 @@
           msg: "{{ item }}"
         loop: "{{ folder_list.stdout_lines }}"
       - name: Check if file exists
-        file:
-          stat:
-            path: "{{ new_file }}"
+        stat:
+          path: "{{ new_file }}"
         register: file_status
       - name: Create a file 
         file:
