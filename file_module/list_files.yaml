@@ -10,3 +10,13 @@
         debug:
           msg: "{{ item }}"
         loop: "{{ folder_list.stdout_lines }}"
+      - name: Check if file exists
+        file:
+          stat:
+            path: "{{ new_file }}"
+        register: file_status
+      - name: Create a file 
+        file:
+          path: "{{ new_file }}"
+          state: touch
+        when: not file_status.stat.exists
