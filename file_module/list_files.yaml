@@ -1,0 +1,12 @@
+---
+  - name: Play to list the files in the directory
+    hosts: all
+    become: yes
+    tasks:
+      - name: Get the list of directory
+        shell: ls "{{ folder_path }}"
+        register: folder_list
+      - name: Display list of directory
+        debug:
+          msg: "{{ item }}"
+        loop: "{{ folder_list.stdout }}"
